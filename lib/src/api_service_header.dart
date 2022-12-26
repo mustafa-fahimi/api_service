@@ -14,11 +14,12 @@ abstract class ApiServiceHeader with _$ApiServiceHeader {
 
 extension ApiServiceHeaderEx on ApiServiceHeader {
   Map<String, String> get toMap {
-    Map<String, String>? headers = when(
-        formData: (headers) => headers,
-        basic: (headers) => headers,
-        data: (headers) => headers);
-    Map<String, String> map = {
+    final headers = when(
+      formData: (headers) => headers,
+      basic: (headers) => headers,
+      data: (headers) => headers,
+    );
+    final map = <String, String>{
       'accept': 'application/json',
       'content-type': when(
         formData: (headers) => 'multipart/form-data; boundary=something',
