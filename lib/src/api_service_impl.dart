@@ -84,7 +84,7 @@ class ApiServiceImpl implements ApiService {
   @override
   Future<Either<DioError, Response<T>>> patchMethod<T>(
     String endpoint, {
-    ApiServiceOption? option,
+    ApiServiceOption? option = const ApiServiceOption(),
     dynamic body,
   }) async =>
       dio
