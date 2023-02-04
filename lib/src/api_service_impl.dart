@@ -80,4 +80,22 @@ class ApiServiceImpl implements ApiService {
           .catchError(
             (dynamic e) => left<DioError, Response<T>>(e as DioError),
           );
+
+  @override
+  Future<Either<DioError, Response<T>>> patchMethod<T>(
+    String endpoint, {
+    ApiServiceOption? option,
+    dynamic body,
+  }) async =>
+      dio
+          .patch<T>(
+            endpoint,
+            options: option!.requestOptions,
+            queryParameters: option.query,
+            data: body,
+          )
+          .then((response) => right<DioError, Response<T>>(response))
+          .catchError(
+            (dynamic e) => left<DioError, Response<T>>(e as DioError),
+          );
 }

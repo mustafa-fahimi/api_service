@@ -4,7 +4,6 @@ linter:
     public_member_api_docs: false
     one_member_abstracts: false
     unnecessary_this: false
-    must_be_immutable: false
     use_super_parameters: false
 
 analyzer:
@@ -16,3 +15,4 @@ analyzer:
   errors:
     todo: ignore
     fixme: ignore
+    must_be_immutable: ignore

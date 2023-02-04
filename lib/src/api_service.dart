@@ -29,4 +29,11 @@ abstract class ApiService {
     ApiServiceOption? option,
     dynamic body,
   });
+
+  ///perform a http post request
+  Future<Either<DioError, Response<T>>> patchMethod<T>(
+    String endpoint, {
+    ApiServiceOption? option,
+    dynamic body,
+  });
 }
