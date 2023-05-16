@@ -20,7 +20,7 @@ class ApiServiceImpl implements ApiService {
             endpoint,
             options: option!.requestOptions,
             queryParameters: option.query,
-            onReceiveProgress: option.onReceivePercentage,
+            onReceiveProgress: option.onReceiveProgress,
           )
           .then((response) => right<DioError, Response<T>>(response))
           .catchError(
@@ -57,6 +57,7 @@ class ApiServiceImpl implements ApiService {
             options: option!.requestOptions,
             queryParameters: option.query,
             data: body,
+            onSendProgress: option.onSendProgress,
           )
           .then((response) => right<DioError, Response<T>>(response))
           .catchError(

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'api_service_response_type.dart';
 
@@ -26,10 +26,10 @@ mixin _$ApiServiceResponseType {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? json,
-    TResult Function()? stream,
-    TResult Function()? plain,
-    TResult Function()? bytes,
+    TResult? Function()? json,
+    TResult? Function()? stream,
+    TResult? Function()? plain,
+    TResult? Function()? bytes,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,10 +51,10 @@ mixin _$ApiServiceResponseType {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Json value)? json,
-    TResult Function(_Stream value)? stream,
-    TResult Function(_Plain value)? plain,
-    TResult Function(_Bytes value)? bytes,
+    TResult? Function(_Json value)? json,
+    TResult? Function(_Stream value)? stream,
+    TResult? Function(_Plain value)? plain,
+    TResult? Function(_Bytes value)? bytes,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -72,17 +72,19 @@ mixin _$ApiServiceResponseType {
 abstract class $ApiServiceResponseTypeCopyWith<$Res> {
   factory $ApiServiceResponseTypeCopyWith(ApiServiceResponseType value,
           $Res Function(ApiServiceResponseType) then) =
-      _$ApiServiceResponseTypeCopyWithImpl<$Res>;
+      _$ApiServiceResponseTypeCopyWithImpl<$Res, ApiServiceResponseType>;
 }
 
 /// @nodoc
-class _$ApiServiceResponseTypeCopyWithImpl<$Res>
+class _$ApiServiceResponseTypeCopyWithImpl<$Res,
+        $Val extends ApiServiceResponseType>
     implements $ApiServiceResponseTypeCopyWith<$Res> {
   _$ApiServiceResponseTypeCopyWithImpl(this._value, this._then);
 
-  final ApiServiceResponseType _value;
   // ignore: unused_field
-  final $Res Function(ApiServiceResponseType) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -93,13 +95,10 @@ abstract class _$$_JsonCopyWith<$Res> {
 
 /// @nodoc
 class __$$_JsonCopyWithImpl<$Res>
-    extends _$ApiServiceResponseTypeCopyWithImpl<$Res>
+    extends _$ApiServiceResponseTypeCopyWithImpl<$Res, _$_Json>
     implements _$$_JsonCopyWith<$Res> {
   __$$_JsonCopyWithImpl(_$_Json _value, $Res Function(_$_Json) _then)
-      : super(_value, (v) => _then(v as _$_Json));
-
-  @override
-  _$_Json get _value => super._value as _$_Json;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -135,10 +134,10 @@ class _$_Json implements _Json {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? json,
-    TResult Function()? stream,
-    TResult Function()? plain,
-    TResult Function()? bytes,
+    TResult? Function()? json,
+    TResult? Function()? stream,
+    TResult? Function()? plain,
+    TResult? Function()? bytes,
   }) {
     return json?.call();
   }
@@ -172,10 +171,10 @@ class _$_Json implements _Json {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Json value)? json,
-    TResult Function(_Stream value)? stream,
-    TResult Function(_Plain value)? plain,
-    TResult Function(_Bytes value)? bytes,
+    TResult? Function(_Json value)? json,
+    TResult? Function(_Stream value)? stream,
+    TResult? Function(_Plain value)? plain,
+    TResult? Function(_Bytes value)? bytes,
   }) {
     return json?.call(this);
   }
@@ -208,13 +207,10 @@ abstract class _$$_StreamCopyWith<$Res> {
 
 /// @nodoc
 class __$$_StreamCopyWithImpl<$Res>
-    extends _$ApiServiceResponseTypeCopyWithImpl<$Res>
+    extends _$ApiServiceResponseTypeCopyWithImpl<$Res, _$_Stream>
     implements _$$_StreamCopyWith<$Res> {
   __$$_StreamCopyWithImpl(_$_Stream _value, $Res Function(_$_Stream) _then)
-      : super(_value, (v) => _then(v as _$_Stream));
-
-  @override
-  _$_Stream get _value => super._value as _$_Stream;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -250,10 +246,10 @@ class _$_Stream implements _Stream {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? json,
-    TResult Function()? stream,
-    TResult Function()? plain,
-    TResult Function()? bytes,
+    TResult? Function()? json,
+    TResult? Function()? stream,
+    TResult? Function()? plain,
+    TResult? Function()? bytes,
   }) {
     return stream?.call();
   }
@@ -287,10 +283,10 @@ class _$_Stream implements _Stream {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Json value)? json,
-    TResult Function(_Stream value)? stream,
-    TResult Function(_Plain value)? plain,
-    TResult Function(_Bytes value)? bytes,
+    TResult? Function(_Json value)? json,
+    TResult? Function(_Stream value)? stream,
+    TResult? Function(_Plain value)? plain,
+    TResult? Function(_Bytes value)? bytes,
   }) {
     return stream?.call(this);
   }
@@ -323,13 +319,10 @@ abstract class _$$_PlainCopyWith<$Res> {
 
 /// @nodoc
 class __$$_PlainCopyWithImpl<$Res>
-    extends _$ApiServiceResponseTypeCopyWithImpl<$Res>
+    extends _$ApiServiceResponseTypeCopyWithImpl<$Res, _$_Plain>
     implements _$$_PlainCopyWith<$Res> {
   __$$_PlainCopyWithImpl(_$_Plain _value, $Res Function(_$_Plain) _then)
-      : super(_value, (v) => _then(v as _$_Plain));
-
-  @override
-  _$_Plain get _value => super._value as _$_Plain;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -365,10 +358,10 @@ class _$_Plain implements _Plain {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? json,
-    TResult Function()? stream,
-    TResult Function()? plain,
-    TResult Function()? bytes,
+    TResult? Function()? json,
+    TResult? Function()? stream,
+    TResult? Function()? plain,
+    TResult? Function()? bytes,
   }) {
     return plain?.call();
   }
@@ -402,10 +395,10 @@ class _$_Plain implements _Plain {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Json value)? json,
-    TResult Function(_Stream value)? stream,
-    TResult Function(_Plain value)? plain,
-    TResult Function(_Bytes value)? bytes,
+    TResult? Function(_Json value)? json,
+    TResult? Function(_Stream value)? stream,
+    TResult? Function(_Plain value)? plain,
+    TResult? Function(_Bytes value)? bytes,
   }) {
     return plain?.call(this);
   }
@@ -438,13 +431,10 @@ abstract class _$$_BytesCopyWith<$Res> {
 
 /// @nodoc
 class __$$_BytesCopyWithImpl<$Res>
-    extends _$ApiServiceResponseTypeCopyWithImpl<$Res>
+    extends _$ApiServiceResponseTypeCopyWithImpl<$Res, _$_Bytes>
     implements _$$_BytesCopyWith<$Res> {
   __$$_BytesCopyWithImpl(_$_Bytes _value, $Res Function(_$_Bytes) _then)
-      : super(_value, (v) => _then(v as _$_Bytes));
-
-  @override
-  _$_Bytes get _value => super._value as _$_Bytes;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -480,10 +470,10 @@ class _$_Bytes implements _Bytes {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? json,
-    TResult Function()? stream,
-    TResult Function()? plain,
-    TResult Function()? bytes,
+    TResult? Function()? json,
+    TResult? Function()? stream,
+    TResult? Function()? plain,
+    TResult? Function()? bytes,
   }) {
     return bytes?.call();
   }
@@ -517,10 +507,10 @@ class _$_Bytes implements _Bytes {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Json value)? json,
-    TResult Function(_Stream value)? stream,
-    TResult Function(_Plain value)? plain,
-    TResult Function(_Bytes value)? bytes,
+    TResult? Function(_Json value)? json,
+    TResult? Function(_Stream value)? stream,
+    TResult? Function(_Plain value)? plain,
+    TResult? Function(_Bytes value)? bytes,
   }) {
     return bytes?.call(this);
   }

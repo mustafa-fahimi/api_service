@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'api_service_header.dart';
 
@@ -26,9 +26,9 @@ mixin _$ApiServiceHeader {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Map<String, String>? headers)? formData,
-    TResult Function(Map<String, String>? headers)? basic,
-    TResult Function(Map<String, String>? headers)? data,
+    TResult? Function(Map<String, String>? headers)? formData,
+    TResult? Function(Map<String, String>? headers)? basic,
+    TResult? Function(Map<String, String>? headers)? data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -48,9 +48,9 @@ mixin _$ApiServiceHeader {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_FormData value)? formData,
-    TResult Function(Basic value)? basic,
-    TResult Function(_Data value)? data,
+    TResult? Function(_FormData value)? formData,
+    TResult? Function(Basic value)? basic,
+    TResult? Function(_Data value)? data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -71,29 +71,32 @@ mixin _$ApiServiceHeader {
 abstract class $ApiServiceHeaderCopyWith<$Res> {
   factory $ApiServiceHeaderCopyWith(
           ApiServiceHeader value, $Res Function(ApiServiceHeader) then) =
-      _$ApiServiceHeaderCopyWithImpl<$Res>;
+      _$ApiServiceHeaderCopyWithImpl<$Res, ApiServiceHeader>;
+  @useResult
   $Res call({Map<String, String>? headers});
 }
 
 /// @nodoc
-class _$ApiServiceHeaderCopyWithImpl<$Res>
+class _$ApiServiceHeaderCopyWithImpl<$Res, $Val extends ApiServiceHeader>
     implements $ApiServiceHeaderCopyWith<$Res> {
   _$ApiServiceHeaderCopyWithImpl(this._value, this._then);
 
-  final ApiServiceHeader _value;
   // ignore: unused_field
-  final $Res Function(ApiServiceHeader) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? headers = freezed,
   }) {
     return _then(_value.copyWith(
-      headers: headers == freezed
+      headers: freezed == headers
           ? _value.headers
           : headers // ignore: cast_nullable_to_non_nullable
               as Map<String, String>?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -104,26 +107,25 @@ abstract class _$$_FormDataCopyWith<$Res>
           _$_FormData value, $Res Function(_$_FormData) then) =
       __$$_FormDataCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({Map<String, String>? headers});
 }
 
 /// @nodoc
 class __$$_FormDataCopyWithImpl<$Res>
-    extends _$ApiServiceHeaderCopyWithImpl<$Res>
+    extends _$ApiServiceHeaderCopyWithImpl<$Res, _$_FormData>
     implements _$$_FormDataCopyWith<$Res> {
   __$$_FormDataCopyWithImpl(
       _$_FormData _value, $Res Function(_$_FormData) _then)
-      : super(_value, (v) => _then(v as _$_FormData));
+      : super(_value, _then);
 
-  @override
-  _$_FormData get _value => super._value as _$_FormData;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? headers = freezed,
   }) {
     return _then(_$_FormData(
-      headers: headers == freezed
+      headers: freezed == headers
           ? _value._headers
           : headers // ignore: cast_nullable_to_non_nullable
               as Map<String, String>?,
@@ -141,6 +143,7 @@ class _$_FormData implements _FormData {
   Map<String, String>? get headers {
     final value = _headers;
     if (value == null) return null;
+    if (_headers is EqualUnmodifiableMapView) return _headers;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(value);
   }
@@ -164,6 +167,7 @@ class _$_FormData implements _FormData {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_FormDataCopyWith<_$_FormData> get copyWith =>
       __$$_FormDataCopyWithImpl<_$_FormData>(this, _$identity);
 
@@ -180,9 +184,9 @@ class _$_FormData implements _FormData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Map<String, String>? headers)? formData,
-    TResult Function(Map<String, String>? headers)? basic,
-    TResult Function(Map<String, String>? headers)? data,
+    TResult? Function(Map<String, String>? headers)? formData,
+    TResult? Function(Map<String, String>? headers)? basic,
+    TResult? Function(Map<String, String>? headers)? data,
   }) {
     return formData?.call(headers);
   }
@@ -214,9 +218,9 @@ class _$_FormData implements _FormData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_FormData value)? formData,
-    TResult Function(Basic value)? basic,
-    TResult Function(_Data value)? data,
+    TResult? Function(_FormData value)? formData,
+    TResult? Function(Basic value)? basic,
+    TResult? Function(_Data value)? data,
   }) {
     return formData?.call(this);
   }
@@ -253,24 +257,24 @@ abstract class _$$BasicCopyWith<$Res>
   factory _$$BasicCopyWith(_$Basic value, $Res Function(_$Basic) then) =
       __$$BasicCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({Map<String, String>? headers});
 }
 
 /// @nodoc
-class __$$BasicCopyWithImpl<$Res> extends _$ApiServiceHeaderCopyWithImpl<$Res>
+class __$$BasicCopyWithImpl<$Res>
+    extends _$ApiServiceHeaderCopyWithImpl<$Res, _$Basic>
     implements _$$BasicCopyWith<$Res> {
   __$$BasicCopyWithImpl(_$Basic _value, $Res Function(_$Basic) _then)
-      : super(_value, (v) => _then(v as _$Basic));
+      : super(_value, _then);
 
-  @override
-  _$Basic get _value => super._value as _$Basic;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? headers = freezed,
   }) {
     return _then(_$Basic(
-      headers: headers == freezed
+      headers: freezed == headers
           ? _value._headers
           : headers // ignore: cast_nullable_to_non_nullable
               as Map<String, String>?,
@@ -288,6 +292,7 @@ class _$Basic implements Basic {
   Map<String, String>? get headers {
     final value = _headers;
     if (value == null) return null;
+    if (_headers is EqualUnmodifiableMapView) return _headers;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(value);
   }
@@ -311,6 +316,7 @@ class _$Basic implements Basic {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$BasicCopyWith<_$Basic> get copyWith =>
       __$$BasicCopyWithImpl<_$Basic>(this, _$identity);
 
@@ -327,9 +333,9 @@ class _$Basic implements Basic {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Map<String, String>? headers)? formData,
-    TResult Function(Map<String, String>? headers)? basic,
-    TResult Function(Map<String, String>? headers)? data,
+    TResult? Function(Map<String, String>? headers)? formData,
+    TResult? Function(Map<String, String>? headers)? basic,
+    TResult? Function(Map<String, String>? headers)? data,
   }) {
     return basic?.call(headers);
   }
@@ -361,9 +367,9 @@ class _$Basic implements Basic {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_FormData value)? formData,
-    TResult Function(Basic value)? basic,
-    TResult Function(_Data value)? data,
+    TResult? Function(_FormData value)? formData,
+    TResult? Function(Basic value)? basic,
+    TResult? Function(_Data value)? data,
   }) {
     return basic?.call(this);
   }
@@ -399,24 +405,24 @@ abstract class _$$_DataCopyWith<$Res>
   factory _$$_DataCopyWith(_$_Data value, $Res Function(_$_Data) then) =
       __$$_DataCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({Map<String, String>? headers});
 }
 
 /// @nodoc
-class __$$_DataCopyWithImpl<$Res> extends _$ApiServiceHeaderCopyWithImpl<$Res>
+class __$$_DataCopyWithImpl<$Res>
+    extends _$ApiServiceHeaderCopyWithImpl<$Res, _$_Data>
     implements _$$_DataCopyWith<$Res> {
   __$$_DataCopyWithImpl(_$_Data _value, $Res Function(_$_Data) _then)
-      : super(_value, (v) => _then(v as _$_Data));
+      : super(_value, _then);
 
-  @override
-  _$_Data get _value => super._value as _$_Data;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? headers = freezed,
   }) {
     return _then(_$_Data(
-      headers: headers == freezed
+      headers: freezed == headers
           ? _value._headers
           : headers // ignore: cast_nullable_to_non_nullable
               as Map<String, String>?,
@@ -434,6 +440,7 @@ class _$_Data implements _Data {
   Map<String, String>? get headers {
     final value = _headers;
     if (value == null) return null;
+    if (_headers is EqualUnmodifiableMapView) return _headers;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(value);
   }
@@ -457,6 +464,7 @@ class _$_Data implements _Data {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_DataCopyWith<_$_Data> get copyWith =>
       __$$_DataCopyWithImpl<_$_Data>(this, _$identity);
 
@@ -473,9 +481,9 @@ class _$_Data implements _Data {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Map<String, String>? headers)? formData,
-    TResult Function(Map<String, String>? headers)? basic,
-    TResult Function(Map<String, String>? headers)? data,
+    TResult? Function(Map<String, String>? headers)? formData,
+    TResult? Function(Map<String, String>? headers)? basic,
+    TResult? Function(Map<String, String>? headers)? data,
   }) {
     return data?.call(headers);
   }
@@ -507,9 +515,9 @@ class _$_Data implements _Data {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_FormData value)? formData,
-    TResult Function(Basic value)? basic,
-    TResult Function(_Data value)? data,
+    TResult? Function(_FormData value)? formData,
+    TResult? Function(Basic value)? basic,
+    TResult? Function(_Data value)? data,
   }) {
     return data?.call(this);
   }

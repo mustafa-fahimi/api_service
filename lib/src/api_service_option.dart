@@ -7,14 +7,16 @@ typedef OnPercentage = void Function(int currentBytes, int totalBytes);
 class ApiServiceOption {
   const ApiServiceOption({
     this.query,
-    this.onReceivePercentage,
+    this.onReceiveProgress,
+    this.onSendProgress,
     this.header = const ApiServiceHeader.basic(),
     this.responseType = const ApiServiceResponseType.json(),
   });
 
   final ApiServiceHeader header;
   final Map<String, dynamic>? query;
-  final OnPercentage? onReceivePercentage;
+  final OnPercentage? onReceiveProgress;
+  final OnPercentage? onSendProgress;
   final ApiServiceResponseType responseType;
 }
 
