@@ -7,6 +7,7 @@ abstract class ApiService {
   Future<Either<DioError, Response<T>>> getMethod<T>(
     String endpoint, {
     ApiServiceOption? option,
+    CancelToken? cancelToken,
   });
 
   ///perform a http put request
@@ -14,6 +15,7 @@ abstract class ApiService {
     String endpoint, {
     ApiServiceOption? option,
     dynamic body,
+    CancelToken? cancelToken,
   });
 
   ///perform a http delete request
@@ -21,6 +23,7 @@ abstract class ApiService {
     String endpoint, {
     ApiServiceOption? option,
     dynamic body,
+    CancelToken? cancelToken,
   });
 
   ///perform a http post request
@@ -28,6 +31,7 @@ abstract class ApiService {
     String endpoint, {
     ApiServiceOption? option,
     dynamic body,
+    CancelToken? cancelToken,
   });
 
   ///perform a http post request
@@ -35,5 +39,6 @@ abstract class ApiService {
     String endpoint, {
     ApiServiceOption? option,
     dynamic body,
+    CancelToken? cancelToken,
   });
 }
