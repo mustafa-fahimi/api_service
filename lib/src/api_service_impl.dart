@@ -14,6 +14,7 @@ class ApiServiceImpl implements ApiService {
   Future<Either<DioError, Response<T>>> getMethod<T>(
     String endpoint, {
     ApiServiceOption? option = const ApiServiceOption(),
+    CancelToken? cancelToken,
   }) async =>
       dio
           .get<T>(
@@ -21,6 +22,7 @@ class ApiServiceImpl implements ApiService {
             options: option!.requestOptions,
             queryParameters: option.query,
             onReceiveProgress: option.onReceiveProgress,
+            cancelToken: cancelToken,
           )
           .then((response) => right<DioError, Response<T>>(response))
           .catchError(
@@ -32,6 +34,7 @@ class ApiServiceImpl implements ApiService {
     String endpoint, {
     ApiServiceOption? option = const ApiServiceOption(),
     dynamic body,
+    CancelToken? cancelToken,
   }) async =>
       dio
           .delete<T>(
@@ -39,6 +42,7 @@ class ApiServiceImpl implements ApiService {
             options: option!.requestOptions,
             queryParameters: option.query,
             data: body,
+            cancelToken: cancelToken,
           )
           .then((response) => right<DioError, Response<T>>(response))
           .catchError(
@@ -50,6 +54,7 @@ class ApiServiceImpl implements ApiService {
     String endpoint, {
     ApiServiceOption? option = const ApiServiceOption(),
     dynamic body,
+    CancelToken? cancelToken,
   }) async =>
       dio
           .post<T>(
@@ -58,6 +63,7 @@ class ApiServiceImpl implements ApiService {
             queryParameters: option.query,
             data: body,
             onSendProgress: option.onSendProgress,
+            cancelToken: cancelToken,
           )
           .then((response) => right<DioError, Response<T>>(response))
           .catchError(
@@ -69,6 +75,7 @@ class ApiServiceImpl implements ApiService {
     String endpoint, {
     ApiServiceOption? option = const ApiServiceOption(),
     dynamic body,
+    CancelToken? cancelToken,
   }) async =>
       dio
           .put<T>(
@@ -76,6 +83,7 @@ class ApiServiceImpl implements ApiService {
             options: option!.requestOptions,
             queryParameters: option.query,
             data: body,
+            cancelToken: cancelToken,
           )
           .then((response) => right<DioError, Response<T>>(response))
           .catchError(
@@ -87,6 +95,7 @@ class ApiServiceImpl implements ApiService {
     String endpoint, {
     ApiServiceOption? option = const ApiServiceOption(),
     dynamic body,
+    CancelToken? cancelToken,
   }) async =>
       dio
           .patch<T>(
@@ -94,6 +103,7 @@ class ApiServiceImpl implements ApiService {
             options: option!.requestOptions,
             queryParameters: option.query,
             data: body,
+            cancelToken: cancelToken,
           )
           .then((response) => right<DioError, Response<T>>(response))
           .catchError(
