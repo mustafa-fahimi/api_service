@@ -1,10 +1,10 @@
 name: api_service
 description: API Service Package.
 version: 1.0.0
-publish_to: "none"
+publish_to: 'none'
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"
+  sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
   dartz: ^0.10.1
@@ -18,6 +18,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   freezed: ^2.3.4
-  very_good_analysis: ^4.0.0+1
+  very_good_analysis: ^5.0.0+1
 
 flutter: null
