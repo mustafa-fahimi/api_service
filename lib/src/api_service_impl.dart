@@ -11,7 +11,7 @@ class ApiServiceImpl implements ApiService {
   final Dio dio;
 
   @override
-  Future<Either<DioError, Response<T>>> getMethod<T>(
+  Future<Either<DioException, Response<T>>> getMethod<T>(
     String endpoint, {
     ApiServiceOption? option = const ApiServiceOption(),
     CancelToken? cancelToken,
@@ -24,13 +24,13 @@ class ApiServiceImpl implements ApiService {
             onReceiveProgress: option.onReceiveProgress,
             cancelToken: cancelToken,
           )
-          .then((response) => right<DioError, Response<T>>(response))
+          .then((response) => right<DioException, Response<T>>(response))
           .catchError(
-            (dynamic e) => left<DioError, Response<T>>(e as DioError),
+            (dynamic e) => left<DioException, Response<T>>(e as DioException),
           );
 
   @override
-  Future<Either<DioError, Response<T>>> deleteMethod<T>(
+  Future<Either<DioException, Response<T>>> deleteMethod<T>(
     String endpoint, {
     ApiServiceOption? option = const ApiServiceOption(),
     dynamic body,
@@ -44,13 +44,13 @@ class ApiServiceImpl implements ApiService {
             data: body,
             cancelToken: cancelToken,
           )
-          .then((response) => right<DioError, Response<T>>(response))
+          .then((response) => right<DioException, Response<T>>(response))
           .catchError(
-            (dynamic e) => left<DioError, Response<T>>(e as DioError),
+            (dynamic e) => left<DioException, Response<T>>(e as DioException),
           );
 
   @override
-  Future<Either<DioError, Response<T>>> postMethod<T>(
+  Future<Either<DioException, Response<T>>> postMethod<T>(
     String endpoint, {
     ApiServiceOption? option = const ApiServiceOption(),
     dynamic body,
@@ -65,13 +65,13 @@ class ApiServiceImpl implements ApiService {
             onSendProgress: option.onSendProgress,
             cancelToken: cancelToken,
           )
-          .then((response) => right<DioError, Response<T>>(response))
+          .then((response) => right<DioException, Response<T>>(response))
           .catchError(
-            (dynamic e) => left<DioError, Response<T>>(e as DioError),
+            (dynamic e) => left<DioException, Response<T>>(e as DioException),
           );
 
   @override
-  Future<Either<DioError, Response<T>>> putMethod<T>(
+  Future<Either<DioException, Response<T>>> putMethod<T>(
     String endpoint, {
     ApiServiceOption? option = const ApiServiceOption(),
     dynamic body,
@@ -85,13 +85,13 @@ class ApiServiceImpl implements ApiService {
             data: body,
             cancelToken: cancelToken,
           )
-          .then((response) => right<DioError, Response<T>>(response))
+          .then((response) => right<DioException, Response<T>>(response))
           .catchError(
-            (dynamic e) => left<DioError, Response<T>>(e as DioError),
+            (dynamic e) => left<DioException, Response<T>>(e as DioException),
           );
 
   @override
-  Future<Either<DioError, Response<T>>> patchMethod<T>(
+  Future<Either<DioException, Response<T>>> patchMethod<T>(
     String endpoint, {
     ApiServiceOption? option = const ApiServiceOption(),
     dynamic body,
@@ -105,8 +105,8 @@ class ApiServiceImpl implements ApiService {
             data: body,
             cancelToken: cancelToken,
           )
-          .then((response) => right<DioError, Response<T>>(response))
+          .then((response) => right<DioException, Response<T>>(response))
           .catchError(
-            (dynamic e) => left<DioError, Response<T>>(e as DioError),
+            (dynamic e) => left<DioException, Response<T>>(e as DioException),
           );
 }
