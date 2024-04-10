@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
 class ApiServiceImpl implements ApiService {
-  ApiServiceImpl({this.interceptors, required this.dio}) {
+  ApiServiceImpl({required this.dio, this.interceptors}) {
     dio.interceptors.addAll(interceptors ?? []);
   }
 
