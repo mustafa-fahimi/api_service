@@ -12,7 +12,7 @@ part of 'api_service_header.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ApiServiceHeader {
@@ -62,7 +62,9 @@ mixin _$ApiServiceHeader {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApiServiceHeader
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ApiServiceHeaderCopyWith<ApiServiceHeader> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -86,6 +88,8 @@ class _$ApiServiceHeaderCopyWithImpl<$Res, $Val extends ApiServiceHeader>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ApiServiceHeader
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -101,30 +105,32 @@ class _$ApiServiceHeaderCopyWithImpl<$Res, $Val extends ApiServiceHeader>
 }
 
 /// @nodoc
-abstract class _$$_FormDataCopyWith<$Res>
+abstract class _$$FormDataImplCopyWith<$Res>
     implements $ApiServiceHeaderCopyWith<$Res> {
-  factory _$$_FormDataCopyWith(
-          _$_FormData value, $Res Function(_$_FormData) then) =
-      __$$_FormDataCopyWithImpl<$Res>;
+  factory _$$FormDataImplCopyWith(
+          _$FormDataImpl value, $Res Function(_$FormDataImpl) then) =
+      __$$FormDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Map<String, String>? headers});
 }
 
 /// @nodoc
-class __$$_FormDataCopyWithImpl<$Res>
-    extends _$ApiServiceHeaderCopyWithImpl<$Res, _$_FormData>
-    implements _$$_FormDataCopyWith<$Res> {
-  __$$_FormDataCopyWithImpl(
-      _$_FormData _value, $Res Function(_$_FormData) _then)
+class __$$FormDataImplCopyWithImpl<$Res>
+    extends _$ApiServiceHeaderCopyWithImpl<$Res, _$FormDataImpl>
+    implements _$$FormDataImplCopyWith<$Res> {
+  __$$FormDataImplCopyWithImpl(
+      _$FormDataImpl _value, $Res Function(_$FormDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApiServiceHeader
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? headers = freezed,
   }) {
-    return _then(_$_FormData(
+    return _then(_$FormDataImpl(
       headers: freezed == headers
           ? _value._headers
           : headers // ignore: cast_nullable_to_non_nullable
@@ -135,8 +141,9 @@ class __$$_FormDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_FormData implements _FormData {
-  const _$_FormData({final Map<String, String>? headers}) : _headers = headers;
+class _$FormDataImpl implements _FormData {
+  const _$FormDataImpl({final Map<String, String>? headers})
+      : _headers = headers;
 
   final Map<String, String>? _headers;
   @override
@@ -154,10 +161,10 @@ class _$_FormData implements _FormData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FormData &&
+            other is _$FormDataImpl &&
             const DeepCollectionEquality().equals(other._headers, _headers));
   }
 
@@ -165,11 +172,13 @@ class _$_FormData implements _FormData {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_headers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApiServiceHeader
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FormDataCopyWith<_$_FormData> get copyWith =>
-      __$$_FormDataCopyWithImpl<_$_FormData>(this, _$identity);
+  _$$FormDataImplCopyWith<_$FormDataImpl> get copyWith =>
+      __$$FormDataImplCopyWithImpl<_$FormDataImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -241,39 +250,47 @@ class _$_FormData implements _FormData {
 }
 
 abstract class _FormData implements ApiServiceHeader {
-  const factory _FormData({final Map<String, String>? headers}) = _$_FormData;
+  const factory _FormData({final Map<String, String>? headers}) =
+      _$FormDataImpl;
 
   @override
   Map<String, String>? get headers;
+
+  /// Create a copy of ApiServiceHeader
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_FormDataCopyWith<_$_FormData> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FormDataImplCopyWith<_$FormDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$BasicCopyWith<$Res>
+abstract class _$$BasicImplCopyWith<$Res>
     implements $ApiServiceHeaderCopyWith<$Res> {
-  factory _$$BasicCopyWith(_$Basic value, $Res Function(_$Basic) then) =
-      __$$BasicCopyWithImpl<$Res>;
+  factory _$$BasicImplCopyWith(
+          _$BasicImpl value, $Res Function(_$BasicImpl) then) =
+      __$$BasicImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Map<String, String>? headers});
 }
 
 /// @nodoc
-class __$$BasicCopyWithImpl<$Res>
-    extends _$ApiServiceHeaderCopyWithImpl<$Res, _$Basic>
-    implements _$$BasicCopyWith<$Res> {
-  __$$BasicCopyWithImpl(_$Basic _value, $Res Function(_$Basic) _then)
+class __$$BasicImplCopyWithImpl<$Res>
+    extends _$ApiServiceHeaderCopyWithImpl<$Res, _$BasicImpl>
+    implements _$$BasicImplCopyWith<$Res> {
+  __$$BasicImplCopyWithImpl(
+      _$BasicImpl _value, $Res Function(_$BasicImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApiServiceHeader
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? headers = freezed,
   }) {
-    return _then(_$Basic(
+    return _then(_$BasicImpl(
       headers: freezed == headers
           ? _value._headers
           : headers // ignore: cast_nullable_to_non_nullable
@@ -284,8 +301,8 @@ class __$$BasicCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Basic implements Basic {
-  const _$Basic({final Map<String, String>? headers}) : _headers = headers;
+class _$BasicImpl implements Basic {
+  const _$BasicImpl({final Map<String, String>? headers}) : _headers = headers;
 
   final Map<String, String>? _headers;
   @override
@@ -303,10 +320,10 @@ class _$Basic implements Basic {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Basic &&
+            other is _$BasicImpl &&
             const DeepCollectionEquality().equals(other._headers, _headers));
   }
 
@@ -314,11 +331,13 @@ class _$Basic implements Basic {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_headers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApiServiceHeader
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$BasicCopyWith<_$Basic> get copyWith =>
-      __$$BasicCopyWithImpl<_$Basic>(this, _$identity);
+  _$$BasicImplCopyWith<_$BasicImpl> get copyWith =>
+      __$$BasicImplCopyWithImpl<_$BasicImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -390,38 +409,45 @@ class _$Basic implements Basic {
 }
 
 abstract class Basic implements ApiServiceHeader {
-  const factory Basic({final Map<String, String>? headers}) = _$Basic;
+  const factory Basic({final Map<String, String>? headers}) = _$BasicImpl;
 
   @override
   Map<String, String>? get headers;
+
+  /// Create a copy of ApiServiceHeader
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$BasicCopyWith<_$Basic> get copyWith => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$BasicImplCopyWith<_$BasicImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_DataCopyWith<$Res>
+abstract class _$$DataImplCopyWith<$Res>
     implements $ApiServiceHeaderCopyWith<$Res> {
-  factory _$$_DataCopyWith(_$_Data value, $Res Function(_$_Data) then) =
-      __$$_DataCopyWithImpl<$Res>;
+  factory _$$DataImplCopyWith(
+          _$DataImpl value, $Res Function(_$DataImpl) then) =
+      __$$DataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Map<String, String>? headers});
 }
 
 /// @nodoc
-class __$$_DataCopyWithImpl<$Res>
-    extends _$ApiServiceHeaderCopyWithImpl<$Res, _$_Data>
-    implements _$$_DataCopyWith<$Res> {
-  __$$_DataCopyWithImpl(_$_Data _value, $Res Function(_$_Data) _then)
+class __$$DataImplCopyWithImpl<$Res>
+    extends _$ApiServiceHeaderCopyWithImpl<$Res, _$DataImpl>
+    implements _$$DataImplCopyWith<$Res> {
+  __$$DataImplCopyWithImpl(_$DataImpl _value, $Res Function(_$DataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApiServiceHeader
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? headers = freezed,
   }) {
-    return _then(_$_Data(
+    return _then(_$DataImpl(
       headers: freezed == headers
           ? _value._headers
           : headers // ignore: cast_nullable_to_non_nullable
@@ -432,8 +458,8 @@ class __$$_DataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Data implements _Data {
-  const _$_Data({final Map<String, String>? headers}) : _headers = headers;
+class _$DataImpl implements _Data {
+  const _$DataImpl({final Map<String, String>? headers}) : _headers = headers;
 
   final Map<String, String>? _headers;
   @override
@@ -451,10 +477,10 @@ class _$_Data implements _Data {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Data &&
+            other is _$DataImpl &&
             const DeepCollectionEquality().equals(other._headers, _headers));
   }
 
@@ -462,11 +488,13 @@ class _$_Data implements _Data {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_headers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApiServiceHeader
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DataCopyWith<_$_Data> get copyWith =>
-      __$$_DataCopyWithImpl<_$_Data>(this, _$identity);
+  _$$DataImplCopyWith<_$DataImpl> get copyWith =>
+      __$$DataImplCopyWithImpl<_$DataImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -538,11 +566,15 @@ class _$_Data implements _Data {
 }
 
 abstract class _Data implements ApiServiceHeader {
-  const factory _Data({final Map<String, String>? headers}) = _$_Data;
+  const factory _Data({final Map<String, String>? headers}) = _$DataImpl;
 
   @override
   Map<String, String>? get headers;
+
+  /// Create a copy of ApiServiceHeader
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_DataCopyWith<_$_Data> get copyWith => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DataImplCopyWith<_$DataImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
