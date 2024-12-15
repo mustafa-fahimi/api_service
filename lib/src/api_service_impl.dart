@@ -83,6 +83,7 @@ class ApiServiceImpl implements ApiService {
             options: option!.requestOptions,
             queryParameters: option.query,
             data: body,
+            onSendProgress: option.onSendProgress,
             cancelToken: cancelToken,
           )
           .then((response) => right<DioException, Response<T>>(response))
@@ -103,6 +104,7 @@ class ApiServiceImpl implements ApiService {
             options: option!.requestOptions,
             queryParameters: option.query,
             data: body,
+            onSendProgress: option.onSendProgress,
             cancelToken: cancelToken,
           )
           .then((response) => right<DioException, Response<T>>(response))
