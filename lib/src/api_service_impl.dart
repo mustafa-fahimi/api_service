@@ -15,19 +15,18 @@ class ApiServiceImpl implements ApiService {
     String endpoint, {
     ApiServiceOption? option = const ApiServiceOption(),
     CancelToken? cancelToken,
-  }) async =>
-      dio
-          .get<T>(
-            endpoint,
-            options: option!.requestOptions,
-            queryParameters: option.query,
-            onReceiveProgress: option.onReceiveProgress,
-            cancelToken: cancelToken,
-          )
-          .then((response) => right<DioException, Response<T>>(response))
-          .catchError(
-            (dynamic e) => left<DioException, Response<T>>(e as DioException),
-          );
+  }) => dio
+      .get<T>(
+        endpoint,
+        options: option!.requestOptions,
+        queryParameters: option.query,
+        onReceiveProgress: option.onReceiveProgress,
+        cancelToken: cancelToken,
+      )
+      .then((response) => right<DioException, Response<T>>(response))
+      .catchError(
+        (dynamic e) => left<DioException, Response<T>>(e as DioException),
+      );
 
   @override
   Future<Either<DioException, Response<T>>> deleteMethod<T>(
@@ -35,19 +34,18 @@ class ApiServiceImpl implements ApiService {
     ApiServiceOption? option = const ApiServiceOption(),
     dynamic body,
     CancelToken? cancelToken,
-  }) async =>
-      dio
-          .delete<T>(
-            endpoint,
-            options: option!.requestOptions,
-            queryParameters: option.query,
-            data: body,
-            cancelToken: cancelToken,
-          )
-          .then((response) => right<DioException, Response<T>>(response))
-          .catchError(
-            (dynamic e) => left<DioException, Response<T>>(e as DioException),
-          );
+  }) => dio
+      .delete<T>(
+        endpoint,
+        options: option!.requestOptions,
+        queryParameters: option.query,
+        data: body,
+        cancelToken: cancelToken,
+      )
+      .then((response) => right<DioException, Response<T>>(response))
+      .catchError(
+        (dynamic e) => left<DioException, Response<T>>(e as DioException),
+      );
 
   @override
   Future<Either<DioException, Response<T>>> postMethod<T>(
@@ -55,20 +53,19 @@ class ApiServiceImpl implements ApiService {
     ApiServiceOption? option = const ApiServiceOption(),
     dynamic body,
     CancelToken? cancelToken,
-  }) async =>
-      dio
-          .post<T>(
-            endpoint,
-            options: option!.requestOptions,
-            queryParameters: option.query,
-            data: body,
-            onSendProgress: option.onSendProgress,
-            cancelToken: cancelToken,
-          )
-          .then((response) => right<DioException, Response<T>>(response))
-          .catchError(
-            (dynamic e) => left<DioException, Response<T>>(e as DioException),
-          );
+  }) => dio
+      .post<T>(
+        endpoint,
+        options: option!.requestOptions,
+        queryParameters: option.query,
+        data: body,
+        onSendProgress: option.onSendProgress,
+        cancelToken: cancelToken,
+      )
+      .then((response) => right<DioException, Response<T>>(response))
+      .catchError(
+        (dynamic e) => left<DioException, Response<T>>(e as DioException),
+      );
 
   @override
   Future<Either<DioException, Response<T>>> putMethod<T>(
@@ -76,20 +73,19 @@ class ApiServiceImpl implements ApiService {
     ApiServiceOption? option = const ApiServiceOption(),
     dynamic body,
     CancelToken? cancelToken,
-  }) async =>
-      dio
-          .put<T>(
-            endpoint,
-            options: option!.requestOptions,
-            queryParameters: option.query,
-            data: body,
-            onSendProgress: option.onSendProgress,
-            cancelToken: cancelToken,
-          )
-          .then((response) => right<DioException, Response<T>>(response))
-          .catchError(
-            (dynamic e) => left<DioException, Response<T>>(e as DioException),
-          );
+  }) => dio
+      .put<T>(
+        endpoint,
+        options: option!.requestOptions,
+        queryParameters: option.query,
+        data: body,
+        onSendProgress: option.onSendProgress,
+        cancelToken: cancelToken,
+      )
+      .then((response) => right<DioException, Response<T>>(response))
+      .catchError(
+        (dynamic e) => left<DioException, Response<T>>(e as DioException),
+      );
 
   @override
   Future<Either<DioException, Response<T>>> patchMethod<T>(
@@ -97,18 +93,17 @@ class ApiServiceImpl implements ApiService {
     ApiServiceOption? option = const ApiServiceOption(),
     dynamic body,
     CancelToken? cancelToken,
-  }) async =>
-      dio
-          .patch<T>(
-            endpoint,
-            options: option!.requestOptions,
-            queryParameters: option.query,
-            data: body,
-            onSendProgress: option.onSendProgress,
-            cancelToken: cancelToken,
-          )
-          .then((response) => right<DioException, Response<T>>(response))
-          .catchError(
-            (dynamic e) => left<DioException, Response<T>>(e as DioException),
-          );
+  }) => dio
+      .patch<T>(
+        endpoint,
+        options: option!.requestOptions,
+        queryParameters: option.query,
+        data: body,
+        onSendProgress: option.onSendProgress,
+        cancelToken: cancelToken,
+      )
+      .then((response) => right<DioException, Response<T>>(response))
+      .catchError(
+        (dynamic e) => left<DioException, Response<T>>(e as DioException),
+      );
 }

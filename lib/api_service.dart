@@ -1,5 +1,5 @@
 /// API service
-library api_service;
+library;
 
 export 'src/api_service.dart';
 export 'src/api_service_header.dart';
