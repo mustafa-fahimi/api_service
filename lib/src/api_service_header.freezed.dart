@@ -76,8 +76,8 @@ as Map<String, String>?,
 /// @nodoc
 
 
-class _FormData implements ApiServiceHeader {
-  const _FormData({final  Map<String, String>? headers}): _headers = headers;
+class _FormData extends ApiServiceHeader {
+  const _FormData({final  Map<String, String>? headers}): _headers = headers,super._();
   
 
  final  Map<String, String>? _headers;
@@ -150,8 +150,8 @@ as Map<String, String>?,
 /// @nodoc
 
 
-class Basic implements ApiServiceHeader {
-  const Basic({final  Map<String, String>? headers}): _headers = headers;
+class Basic extends ApiServiceHeader {
+  const Basic({final  Map<String, String>? headers}): _headers = headers,super._();
   
 
  final  Map<String, String>? _headers;
@@ -224,8 +224,8 @@ as Map<String, String>?,
 /// @nodoc
 
 
-class _Data implements ApiServiceHeader {
-  const _Data({final  Map<String, String>? headers}): _headers = headers;
+class _Data extends ApiServiceHeader {
+  const _Data({final  Map<String, String>? headers}): _headers = headers,super._();
   
 
  final  Map<String, String>? _headers;

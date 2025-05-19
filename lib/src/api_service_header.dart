@@ -3,7 +3,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'api_service_header.freezed.dart';
 
 @freezed
-abstract class ApiServiceHeader with _$ApiServiceHeader {
+sealed class ApiServiceHeader with _$ApiServiceHeader {
+  const ApiServiceHeader._();
+  
   const factory ApiServiceHeader.formData({Map<String, String>? headers}) =
       _FormData;
 
@@ -14,18 +16,19 @@ abstract class ApiServiceHeader with _$ApiServiceHeader {
 
 extension ApiServiceHeaderEx on ApiServiceHeader {
   Map<String, String> get toMap {
-    final headers = when(
-      formData: (headers) => headers,
-      basic: (headers) => headers,
-      data: (headers) => headers,
-    );
+    final headers = switch (this) {
+      _FormData(headers: final h) => h,
+      Basic(headers: final h) => h,
+      _Data(headers: final h) => h,
+    };
+    
     final map = <String, String>{
       'accept': 'application/json',
-      'content-type': when(
-        formData: (headers) => 'multipart/form-data; boundary=something',
-        basic: (headers) => 'application/json; charset=utf-8',
-        data: (headers) => 'application/json; charset=utf-8',
-      ),
+      'content-type': switch (this) {
+        _FormData() => 'multipart/form-data; boundary=something',
+        Basic() => 'application/json; charset=utf-8',
+        _Data() => 'application/json; charset=utf-8',
+      },
     };
     if (headers != null && headers.isNotEmpty) map.addAll(headers);
     return map;

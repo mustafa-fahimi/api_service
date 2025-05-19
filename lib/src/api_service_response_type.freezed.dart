@@ -45,8 +45,8 @@ $ApiServiceResponseTypeCopyWith(ApiServiceResponseType _, $Res Function(ApiServi
 /// @nodoc
 
 
-class _Json implements ApiServiceResponseType {
-  const _Json();
+class _Json extends ApiServiceResponseType {
+  const _Json(): super._();
   
 
 
@@ -77,8 +77,8 @@ String toString() {
 /// @nodoc
 
 
-class _Stream implements ApiServiceResponseType {
-  const _Stream();
+class _Stream extends ApiServiceResponseType {
+  const _Stream(): super._();
   
 
 
@@ -109,8 +109,8 @@ String toString() {
 /// @nodoc
 
 
-class _Plain implements ApiServiceResponseType {
-  const _Plain();
+class _Plain extends ApiServiceResponseType {
+  const _Plain(): super._();
   
 
 
@@ -141,8 +141,8 @@ String toString() {
 /// @nodoc
 
 
-class _Bytes implements ApiServiceResponseType {
-  const _Bytes();
+class _Bytes extends ApiServiceResponseType {
+  const _Bytes(): super._();
   
 
 

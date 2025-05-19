@@ -4,7 +4,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'api_service_response_type.freezed.dart';
 
 @freezed
-class ApiServiceResponseType with _$ApiServiceResponseType {
+sealed class ApiServiceResponseType with _$ApiServiceResponseType {
+  const ApiServiceResponseType._();
+  
   const factory ApiServiceResponseType.json() = _Json;
 
   const factory ApiServiceResponseType.stream() = _Stream;
@@ -15,10 +17,10 @@ class ApiServiceResponseType with _$ApiServiceResponseType {
 }
 
 extension ApiServiceResponseTypeEx on ApiServiceResponseType {
-  ResponseType get toDio => when(
-        json: () => ResponseType.json,
-        stream: () => ResponseType.stream,
-        plain: () => ResponseType.plain,
-        bytes: () => ResponseType.bytes,
-      );
+  ResponseType get toDio => switch (this) {
+    _Json() => ResponseType.json,
+    _Stream() => ResponseType.stream,
+    _Plain() => ResponseType.plain,
+    _Bytes() => ResponseType.bytes,
+  };
 }
