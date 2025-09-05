@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -72,6 +71,142 @@ as Map<String, String>?,
 
 }
 
+
+/// Adds pattern-matching-related methods to [ApiServiceHeader].
+extension ApiServiceHeaderPatterns on ApiServiceHeader {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _FormData value)?  formData,TResult Function( Basic value)?  basic,TResult Function( _Data value)?  data,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _FormData() when formData != null:
+return formData(_that);case Basic() when basic != null:
+return basic(_that);case _Data() when data != null:
+return data(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _FormData value)  formData,required TResult Function( Basic value)  basic,required TResult Function( _Data value)  data,}){
+final _that = this;
+switch (_that) {
+case _FormData():
+return formData(_that);case Basic():
+return basic(_that);case _Data():
+return data(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _FormData value)?  formData,TResult? Function( Basic value)?  basic,TResult? Function( _Data value)?  data,}){
+final _that = this;
+switch (_that) {
+case _FormData() when formData != null:
+return formData(_that);case Basic() when basic != null:
+return basic(_that);case _Data() when data != null:
+return data(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( Map<String, String>? headers)?  formData,TResult Function( Map<String, String>? headers)?  basic,TResult Function( Map<String, String>? headers)?  data,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _FormData() when formData != null:
+return formData(_that.headers);case Basic() when basic != null:
+return basic(_that.headers);case _Data() when data != null:
+return data(_that.headers);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( Map<String, String>? headers)  formData,required TResult Function( Map<String, String>? headers)  basic,required TResult Function( Map<String, String>? headers)  data,}) {final _that = this;
+switch (_that) {
+case _FormData():
+return formData(_that.headers);case Basic():
+return basic(_that.headers);case _Data():
+return data(_that.headers);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( Map<String, String>? headers)?  formData,TResult? Function( Map<String, String>? headers)?  basic,TResult? Function( Map<String, String>? headers)?  data,}) {final _that = this;
+switch (_that) {
+case _FormData() when formData != null:
+return formData(_that.headers);case Basic() when basic != null:
+return basic(_that.headers);case _Data() when data != null:
+return data(_that.headers);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 
