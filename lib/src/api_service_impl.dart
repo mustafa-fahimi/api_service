@@ -2,6 +2,14 @@ import 'package:api_service/api_service.dart';
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 
+enum HttpMethod {
+  get,
+  post,
+  put,
+  delete,
+  patch,
+}
+
 class ApiServiceImpl implements ApiService {
   ApiServiceImpl({required this.dio, this.interceptors}) {
     dio.interceptors.addAll(interceptors ?? []);
@@ -10,22 +18,71 @@ class ApiServiceImpl implements ApiService {
   final List<Interceptor>? interceptors;
   final Dio dio;
 
-  @override
-  Future<Either<DioException, Response<T>>> getMethod<T>(
+  Future<Either<DioException, Response<T>>> _performRequest<T>(
+    HttpMethod method,
     String endpoint, {
     ApiServiceOption? option = const ApiServiceOption(),
+    dynamic body,
     CancelToken? cancelToken,
-  }) => dio
-      .get<T>(
+  }) {
+    final future = switch (method) {
+      HttpMethod.get => dio.get<T>(
         endpoint,
         options: option!.requestOptions,
         queryParameters: option.query,
         onReceiveProgress: option.onReceiveProgress,
         cancelToken: cancelToken,
-      )
-      .then((response) => right<DioException, Response<T>>(response))
-      .catchError(
-        (dynamic e) => left<DioException, Response<T>>(e as DioException),
+      ),
+      HttpMethod.post => dio.post<T>(
+        endpoint,
+        options: option!.requestOptions,
+        queryParameters: option.query,
+        data: body,
+        onSendProgress: option.onSendProgress,
+        cancelToken: cancelToken,
+      ),
+      HttpMethod.put => dio.put<T>(
+        endpoint,
+        options: option!.requestOptions,
+        queryParameters: option.query,
+        data: body,
+        onSendProgress: option.onSendProgress,
+        cancelToken: cancelToken,
+      ),
+      HttpMethod.delete => dio.delete<T>(
+        endpoint,
+        options: option!.requestOptions,
+        queryParameters: option.query,
+        data: body,
+        cancelToken: cancelToken,
+      ),
+      HttpMethod.patch => dio.patch<T>(
+        endpoint,
+        options: option!.requestOptions,
+        queryParameters: option.query,
+        data: body,
+        onSendProgress: option.onSendProgress,
+        cancelToken: cancelToken,
+      ),
+    };
+
+    return future
+        .then((response) => right<DioException, Response<T>>(response))
+        .catchError(
+          (dynamic e) => left<DioException, Response<T>>(e as DioException),
+        );
+  }
+
+  @override
+  Future<Either<DioException, Response<T>>> getMethod<T>(
+    String endpoint, {
+    ApiServiceOption? option = const ApiServiceOption(),
+    CancelToken? cancelToken,
+  }) => _performRequest(
+        HttpMethod.get,
+        endpoint,
+        option: option,
+        cancelToken: cancelToken,
       );
 
   @override
@@ -34,17 +91,12 @@ class ApiServiceImpl implements ApiService {
     ApiServiceOption? option = const ApiServiceOption(),
     dynamic body,
     CancelToken? cancelToken,
-  }) => dio
-      .delete<T>(
+  }) => _performRequest(
+        HttpMethod.delete,
         endpoint,
-        options: option!.requestOptions,
-        queryParameters: option.query,
-        data: body,
+        option: option,
+        body: body,
         cancelToken: cancelToken,
-      )
-      .then((response) => right<DioException, Response<T>>(response))
-      .catchError(
-        (dynamic e) => left<DioException, Response<T>>(e as DioException),
       );
 
   @override
@@ -53,18 +105,12 @@ class ApiServiceImpl implements ApiService {
     ApiServiceOption? option = const ApiServiceOption(),
     dynamic body,
     CancelToken? cancelToken,
-  }) => dio
-      .post<T>(
+  }) => _performRequest(
+        HttpMethod.post,
         endpoint,
-        options: option!.requestOptions,
-        queryParameters: option.query,
-        data: body,
-        onSendProgress: option.onSendProgress,
+        option: option,
+        body: body,
         cancelToken: cancelToken,
-      )
-      .then((response) => right<DioException, Response<T>>(response))
-      .catchError(
-        (dynamic e) => left<DioException, Response<T>>(e as DioException),
       );
 
   @override
@@ -73,18 +119,12 @@ class ApiServiceImpl implements ApiService {
     ApiServiceOption? option = const ApiServiceOption(),
     dynamic body,
     CancelToken? cancelToken,
-  }) => dio
-      .put<T>(
+  }) => _performRequest(
+        HttpMethod.put,
         endpoint,
-        options: option!.requestOptions,
-        queryParameters: option.query,
-        data: body,
-        onSendProgress: option.onSendProgress,
+        option: option,
+        body: body,
         cancelToken: cancelToken,
-      )
-      .then((response) => right<DioException, Response<T>>(response))
-      .catchError(
-        (dynamic e) => left<DioException, Response<T>>(e as DioException),
       );
 
   @override
@@ -93,17 +133,11 @@ class ApiServiceImpl implements ApiService {
     ApiServiceOption? option = const ApiServiceOption(),
     dynamic body,
     CancelToken? cancelToken,
-  }) => dio
-      .patch<T>(
+  }) => _performRequest(
+        HttpMethod.patch,
         endpoint,
-        options: option!.requestOptions,
-        queryParameters: option.query,
-        data: body,
-        onSendProgress: option.onSendProgress,
+        option: option,
+        body: body,
         cancelToken: cancelToken,
-      )
-      .then((response) => right<DioException, Response<T>>(response))
-      .catchError(
-        (dynamic e) => left<DioException, Response<T>>(e as DioException),
       );
 }
