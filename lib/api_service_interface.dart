@@ -1,5 +1,4 @@
-import 'package:api_service/src/api_service_option.dart';
-import 'package:api_service/src/token_manager.dart';
+import 'package:api_service/api_service.dart';
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 

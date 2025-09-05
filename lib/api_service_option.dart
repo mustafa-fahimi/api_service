@@ -1,5 +1,4 @@
-import 'package:api_service/src/api_service_header.dart';
-import 'package:api_service/src/api_service_response_type.dart';
+import 'package:api_service/api_service.dart';
 import 'package:dio/dio.dart';
 
 typedef OnPercentage = void Function(int currentBytes, int totalBytes);
