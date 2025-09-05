@@ -1,5 +1,6 @@
 import 'package:api_service/api_service.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:fpdart/fpdart.dart';
 
 enum HttpMethod {
@@ -11,12 +12,34 @@ enum HttpMethod {
 }
 
 class ApiServiceImpl implements ApiService {
-  ApiServiceImpl({required this.dio, this.interceptors}) {
-    dio.interceptors.addAll(interceptors ?? []);
+  ApiServiceImpl({
+    required this.dio,
+    this.interceptors,
+    TokenManager? tokenManager,
+    this.tokenRefreshCallback,
+    this.onTokenExpired,
+  }) : _tokenManager = tokenManager ?? TokenManager() {
+    final allInterceptors = [...?interceptors];
+
+    // Only add token interceptor if token management is configured
+    final hasTokenManagement = tokenRefreshCallback != null || onTokenExpired != null || tokenManager != null;
+    if (hasTokenManagement && !allInterceptors.any((interceptor) => interceptor is TokenInterceptor)) {
+      allInterceptors.add(TokenInterceptor(
+        tokenManager: _tokenManager,
+        tokenRefreshCallback: tokenRefreshCallback,
+        onTokenExpired: onTokenExpired,
+      ));
+    }
+
+    dio.interceptors.addAll(allInterceptors);
   }
 
   final List<Interceptor>? interceptors;
   final Dio dio;
+  final TokenManager _tokenManager;
+  final Future<Either<String, TokenPair>> Function(String refreshToken)?
+      tokenRefreshCallback;
+  final VoidCallback? onTokenExpired;
 
   Future<Either<DioException, Response<T>>> _performRequest<T>(
     HttpMethod method,
@@ -140,4 +163,19 @@ class ApiServiceImpl implements ApiService {
         body: body,
         cancelToken: cancelToken,
       );
+
+  @override
+  Future<void> setTokens(TokenPair tokenPair) => _tokenManager.setTokenPair(tokenPair);
+
+  @override
+  Future<void> clearTokens() => _tokenManager.clearTokens();
+
+  @override
+  Future<TokenPair?> get currentTokens => _tokenManager.tokenPair;
+
+  @override
+  Future<bool> get isAuthenticated => _tokenManager.isAuthenticated;
+
+  @override
+  Future<bool> get isTokenExpired => _tokenManager.isTokenExpired;
 }

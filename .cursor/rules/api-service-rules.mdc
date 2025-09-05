@@ -1,0 +1,9 @@
+---
+globs: *
+alwaysApply: false
+---
+This is a Flutter library which is a wrapper around the Dio package and it provides a set of utilities for working with APIs.
+
+Rules:
+- Do not add any comment to the suggested or generated code unless I ask.
+- Just do what I ask an not extra work. I am the chief here.
