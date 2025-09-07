@@ -15,15 +15,13 @@ class ApiServiceImpl implements ApiService {
   ApiServiceImpl({
     required this.dio,
     this.interceptors,
-    TokenManager? tokenManager,
     this.tokenRefreshCallback,
     this.onTokenExpired,
-  }) : _tokenManager = tokenManager ?? TokenManager() {
+  }) : _tokenManager = TokenManager.instance {
     final allInterceptors = [...?interceptors];
 
-    // Only add token interceptor if token management is configured
-    final hasTokenManagement = tokenRefreshCallback != null || onTokenExpired != null || tokenManager != null;
-    if (hasTokenManagement && !allInterceptors.any((interceptor) => interceptor is TokenInterceptor)) {
+    // Add token interceptor by default since we always have secure storage
+    if (!allInterceptors.any((interceptor) => interceptor is TokenInterceptor)) {
       allInterceptors.add(TokenInterceptor(
         tokenManager: _tokenManager,
         tokenRefreshCallback: tokenRefreshCallback,
@@ -40,6 +38,12 @@ class ApiServiceImpl implements ApiService {
   final Future<Either<String, TokenPair>> Function(String refreshToken)?
       tokenRefreshCallback;
   final VoidCallback? onTokenExpired;
+
+  /// Initialize the API service and secure storage
+  @override
+  Future<void> initialize() async {
+    await _tokenManager.initialize();
+  }
 
   Future<Either<DioException, Response<T>>> _performRequest<T>(
     HttpMethod method,

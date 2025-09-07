@@ -3,6 +3,9 @@ import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 
 abstract class ApiService {
+  /// Initialize the API service and secure storage
+  Future<void> initialize();
+
   ///perform a http get request
   Future<Either<DioException, Response<T>>> getMethod<T>(
     String endpoint, {
