@@ -2,6 +2,7 @@ name: api_service_wrapper
 description: A Flutter wrapper around Dio HTTP client providing unified API service interface with secure token management, functional error handling, and cross-platform support.
 
 version: 1.0.0
+publish_to: "https://pub.dartlang.org"
 
 repository: https://github.com/mustafa-fahimi/api_service_wrapper
 homepage: https://github.com/mustafa-fahimi/api_service_wrapper
