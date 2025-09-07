@@ -3,13 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:fpdart/fpdart.dart';
 
-enum HttpMethod {
-  get,
-  post,
-  put,
-  delete,
-  patch,
-}
+enum HttpMethod { get, post, put, delete, patch }
 
 class ApiServiceImpl implements ApiService {
   ApiServiceImpl({
@@ -20,13 +14,16 @@ class ApiServiceImpl implements ApiService {
   }) : _tokenManager = TokenManager.instance {
     final allInterceptors = [...?interceptors];
 
-    // Add token interceptor by default since we always have secure storage
-    if (!allInterceptors.any((interceptor) => interceptor is TokenInterceptor)) {
-      allInterceptors.add(TokenInterceptor(
-        tokenManager: _tokenManager,
-        tokenRefreshCallback: tokenRefreshCallback,
-        onTokenExpired: onTokenExpired,
-      ));
+    if (!allInterceptors.any(
+      (interceptor) => interceptor is TokenInterceptor,
+    )) {
+      allInterceptors.add(
+        TokenInterceptor(
+          tokenManager: _tokenManager,
+          tokenRefreshCallback: tokenRefreshCallback,
+          onTokenExpired: onTokenExpired,
+        ),
+      );
     }
 
     dio.interceptors.addAll(allInterceptors);
@@ -36,10 +33,9 @@ class ApiServiceImpl implements ApiService {
   final Dio dio;
   final TokenManager _tokenManager;
   final Future<Either<String, TokenPair>> Function(String refreshToken)?
-      tokenRefreshCallback;
+  tokenRefreshCallback;
   final VoidCallback? onTokenExpired;
 
-  /// Initialize the API service and secure storage
   @override
   Future<void> initialize() async {
     await _tokenManager.initialize();
@@ -106,11 +102,11 @@ class ApiServiceImpl implements ApiService {
     ApiServiceOption? option = const ApiServiceOption(),
     CancelToken? cancelToken,
   }) => _performRequest(
-        HttpMethod.get,
-        endpoint,
-        option: option,
-        cancelToken: cancelToken,
-      );
+    HttpMethod.get,
+    endpoint,
+    option: option,
+    cancelToken: cancelToken,
+  );
 
   @override
   Future<Either<DioException, Response<T>>> deleteMethod<T>(
@@ -119,12 +115,12 @@ class ApiServiceImpl implements ApiService {
     dynamic body,
     CancelToken? cancelToken,
   }) => _performRequest(
-        HttpMethod.delete,
-        endpoint,
-        option: option,
-        body: body,
-        cancelToken: cancelToken,
-      );
+    HttpMethod.delete,
+    endpoint,
+    option: option,
+    body: body,
+    cancelToken: cancelToken,
+  );
 
   @override
   Future<Either<DioException, Response<T>>> postMethod<T>(
@@ -133,12 +129,12 @@ class ApiServiceImpl implements ApiService {
     dynamic body,
     CancelToken? cancelToken,
   }) => _performRequest(
-        HttpMethod.post,
-        endpoint,
-        option: option,
-        body: body,
-        cancelToken: cancelToken,
-      );
+    HttpMethod.post,
+    endpoint,
+    option: option,
+    body: body,
+    cancelToken: cancelToken,
+  );
 
   @override
   Future<Either<DioException, Response<T>>> putMethod<T>(
@@ -147,12 +143,12 @@ class ApiServiceImpl implements ApiService {
     dynamic body,
     CancelToken? cancelToken,
   }) => _performRequest(
-        HttpMethod.put,
-        endpoint,
-        option: option,
-        body: body,
-        cancelToken: cancelToken,
-      );
+    HttpMethod.put,
+    endpoint,
+    option: option,
+    body: body,
+    cancelToken: cancelToken,
+  );
 
   @override
   Future<Either<DioException, Response<T>>> patchMethod<T>(
@@ -161,15 +157,16 @@ class ApiServiceImpl implements ApiService {
     dynamic body,
     CancelToken? cancelToken,
   }) => _performRequest(
-        HttpMethod.patch,
-        endpoint,
-        option: option,
-        body: body,
-        cancelToken: cancelToken,
-      );
+    HttpMethod.patch,
+    endpoint,
+    option: option,
+    body: body,
+    cancelToken: cancelToken,
+  );
 
   @override
-  Future<void> setTokens(TokenPair tokenPair) => _tokenManager.setTokenPair(tokenPair);
+  Future<void> setTokens(TokenPair tokenPair) =>
+      _tokenManager.setTokenPair(tokenPair);
 
   @override
   Future<void> clearTokens() => _tokenManager.clearTokens();

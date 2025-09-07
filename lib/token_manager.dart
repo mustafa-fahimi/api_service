@@ -1,7 +1,6 @@
 import 'package:database_service/database_service.dart';
 import 'package:database_service/nosql/secure_storage/secure_storage_service_impl.dart';
 
-/// Represents an authentication token pair
 class TokenPair {
   const TokenPair({
     required this.accessToken,
@@ -31,7 +30,6 @@ class TokenPair {
   }
 }
 
-/// Secure token storage implementation using database_service
 class SecureTokenStorage {
   SecureTokenStorage._();
   
@@ -44,7 +42,6 @@ class SecureTokenStorage {
   late final SecureStorageService _secureStorage;
   bool _isInitialized = false;
   
-  /// Initialize the secure storage
   Future<void> initialize() async {
     if (_isInitialized) return;
     
@@ -57,14 +54,12 @@ class SecureTokenStorage {
     }
   }
   
-  /// Ensure storage is initialized before use
   void _ensureInitialized() {
     if (!_isInitialized) {
       throw Exception('SecureTokenStorage not initialized. Call initialize() first.');
     }
   }
   
-  /// Store a value securely
   Future<void> setString(String key, String value) async {
     _ensureInitialized();
     try {
@@ -74,7 +69,6 @@ class SecureTokenStorage {
     }
   }
   
-  /// Retrieve a value securely
   Future<String?> getString(String key) async {
     _ensureInitialized();
     try {
@@ -84,7 +78,6 @@ class SecureTokenStorage {
     }
   }
   
-  /// Remove a value securely
   Future<void> remove(String key) async {
     _ensureInitialized();
     try {
@@ -94,7 +87,6 @@ class SecureTokenStorage {
     }
   }
   
-  /// Store multiple values at once
   Future<void> setBatch(Map<String, String> data) async {
     _ensureInitialized();
     try {
@@ -104,7 +96,6 @@ class SecureTokenStorage {
     }
   }
   
-  /// Check if a key exists
   Future<bool> containsKey(String key) async {
     _ensureInitialized();
     try {
@@ -114,7 +105,6 @@ class SecureTokenStorage {
     }
   }
   
-  /// Clear all stored data
   Future<void> clearAll() async {
     _ensureInitialized();
     try {
@@ -125,7 +115,6 @@ class SecureTokenStorage {
   }
 }
 
-/// Manages authentication tokens with secure persistent storage
 class TokenManager {
   TokenManager._();
   
@@ -138,7 +127,6 @@ class TokenManager {
   final SecureTokenStorage _storage = SecureTokenStorage.instance;
   bool _isInitialized = false;
   
-  /// Initialize the token manager
   Future<void> initialize() async {
     if (_isInitialized) return;
     
@@ -146,7 +134,6 @@ class TokenManager {
     _isInitialized = true;
   }
   
-  /// Ensure the manager is initialized
   void _ensureInitialized() {
     if (!_isInitialized) {
       throw Exception('TokenManager not initialized. Call initialize() first.');
@@ -157,7 +144,6 @@ class TokenManager {
   static const String _refreshTokenKey = 'refresh_token';
   static const String _expiresAtKey = 'token_expires_at';
 
-  /// Get the current token pair
   Future<TokenPair?> get tokenPair async {
     _ensureInitialized();
     
@@ -177,11 +163,9 @@ class TokenManager {
     );
   }
 
-  /// Set the token pair
   Future<void> setTokenPair(TokenPair tokenPair) async {
     _ensureInitialized();
     
-    // Use batch write for better performance and atomicity
     final batch = <String, String>{
       _accessTokenKey: tokenPair.accessToken,
     };
@@ -197,7 +181,6 @@ class TokenManager {
     await _storage.setBatch(batch);
   }
 
-  /// Clear all tokens
   Future<void> clearTokens() async {
     _ensureInitialized();
     
@@ -208,32 +191,27 @@ class TokenManager {
     ]);
   }
 
-  /// Check if user is authenticated
   Future<bool> get isAuthenticated async {
     _ensureInitialized();
     return await tokenPair != null;
   }
 
-  /// Check if current token is expired
   Future<bool> get isTokenExpired async {
     _ensureInitialized();
     final pair = await tokenPair;
     return pair == null || pair.isExpired;
   }
 
-  /// Get access token directly
   Future<String?> get accessToken async {
     _ensureInitialized();
     return (await tokenPair)?.accessToken;
   }
 
-  /// Get refresh token directly
   Future<String?> get refreshToken async {
     _ensureInitialized();
     return (await tokenPair)?.refreshToken;
   }
   
-  /// Clear all secure storage (use with caution)
   Future<void> clearAllSecureData() async {
     _ensureInitialized();
     await _storage.clearAll();
