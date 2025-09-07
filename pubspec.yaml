@@ -9,7 +9,6 @@ topics:
   - flutter
 
 version: 1.0.0
-publish_to: "https://pub.dartlang.org"
 
 repository: https://github.com/mustafa-fahimi/api_service_wrapper
 homepage: https://github.com/mustafa-fahimi/api_service_wrapper
