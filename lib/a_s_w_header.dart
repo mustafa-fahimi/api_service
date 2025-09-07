@@ -2,19 +2,19 @@ import 'dart:math';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'api_service_header.freezed.dart';
+part 'a_s_w_header.freezed.dart';
 
 @freezed
-sealed class ApiServiceHeader with _$ApiServiceHeader {
-  const ApiServiceHeader._();
+sealed class ASWHeader with _$ASWHeader {
+  const ASWHeader._();
 
-  const factory ApiServiceHeader.formData({Map<String, String>? headers}) =
+  const factory ASWHeader.formData({Map<String, String>? headers}) =
       _FormData;
-  const factory ApiServiceHeader.basic({Map<String, String>? headers}) = _Basic;
-  const factory ApiServiceHeader.data({Map<String, String>? headers}) = _Data;
+  const factory ASWHeader.basic({Map<String, String>? headers}) = _Basic;
+  const factory ASWHeader.data({Map<String, String>? headers}) = _Data;
 }
 
-extension ApiServiceHeaderEx on ApiServiceHeader {
+extension ASWHeaderEx on ASWHeader {
   static String _generateBoundary() {
     final random = Random();
     final chars = 'abcdefghijklmnopqrstuvwxyz0123456789';

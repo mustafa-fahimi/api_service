@@ -1,16 +1,16 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'token_pair.freezed.dart';
+part 'a_s_w_token_pair.freezed.dart';
 
 @freezed
-abstract class TokenPair with _$TokenPair {
-  const TokenPair._();
+abstract class ASWTokenPair with _$ASWTokenPair {
+  const ASWTokenPair._();
 
-  const factory TokenPair({
+  const factory ASWTokenPair({
     required String accessToken,
     String? refreshToken,
     DateTime? expiresAt,
-  }) = _TokenPair;
+  }) = _ASWTokenPair;
 
   bool get isExpired {
     if (expiresAt == null) return false;

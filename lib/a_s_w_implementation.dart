@@ -1,25 +1,25 @@
-import 'package:api_service/api_service.dart';
-import 'package:api_service/token_pair.dart';
+import 'package:api_service_wrapper/api_service_wrapper.dart';
+import 'package:api_service_wrapper/a_s_w_token_pair.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:fpdart/fpdart.dart';
 
 enum HttpMethod { get, post, put, delete, patch }
 
-class ApiServiceImpl implements ApiService {
-  ApiServiceImpl({
+class ASWImplementation implements ASWInterface {
+  ASWImplementation({
     required this.dio,
     this.interceptors,
     this.tokenRefreshCallback,
     this.onTokenExpired,
-  }) : _tokenManager = TokenManager.instance {
+  }) : _tokenManager = ASWTokenManager.instance {
     final allInterceptors = [...?interceptors];
 
     if (!allInterceptors.any(
-      (interceptor) => interceptor is TokenInterceptor,
+      (interceptor) => interceptor is ASWTokenInterceptor,
     )) {
       allInterceptors.add(
-        TokenInterceptor(
+        ASWTokenInterceptor(
           tokenManager: _tokenManager,
           tokenRefreshCallback: tokenRefreshCallback,
           onTokenExpired: onTokenExpired,
@@ -32,8 +32,8 @@ class ApiServiceImpl implements ApiService {
 
   final List<Interceptor>? interceptors;
   final Dio dio;
-  final TokenManager _tokenManager;
-  final Future<Either<String, TokenPair>> Function(String refreshToken)?
+  final ASWTokenManager _tokenManager;
+  final Future<Either<String, ASWTokenPair>> Function(String refreshToken)?
   tokenRefreshCallback;
   final VoidCallback? onTokenExpired;
 
@@ -45,7 +45,7 @@ class ApiServiceImpl implements ApiService {
   Future<Either<DioException, Response<T>>> _performRequest<T>(
     HttpMethod method,
     String endpoint, {
-    ApiServiceOption? option = const ApiServiceOption(),
+    ASWOption? option = const ASWOption(),
     dynamic body,
     CancelToken? cancelToken,
   }) {
@@ -100,7 +100,7 @@ class ApiServiceImpl implements ApiService {
   @override
   Future<Either<DioException, Response<T>>> getMethod<T>(
     String endpoint, {
-    ApiServiceOption? option = const ApiServiceOption(),
+    ASWOption? option = const ASWOption(),
     CancelToken? cancelToken,
   }) => _performRequest(
     HttpMethod.get,
@@ -112,7 +112,7 @@ class ApiServiceImpl implements ApiService {
   @override
   Future<Either<DioException, Response<T>>> deleteMethod<T>(
     String endpoint, {
-    ApiServiceOption? option = const ApiServiceOption(),
+    ASWOption? option = const ASWOption(),
     dynamic body,
     CancelToken? cancelToken,
   }) => _performRequest(
@@ -126,7 +126,7 @@ class ApiServiceImpl implements ApiService {
   @override
   Future<Either<DioException, Response<T>>> postMethod<T>(
     String endpoint, {
-    ApiServiceOption? option = const ApiServiceOption(),
+    ASWOption? option = const ASWOption(),
     dynamic body,
     CancelToken? cancelToken,
   }) => _performRequest(
@@ -140,7 +140,7 @@ class ApiServiceImpl implements ApiService {
   @override
   Future<Either<DioException, Response<T>>> putMethod<T>(
     String endpoint, {
-    ApiServiceOption? option = const ApiServiceOption(),
+    ASWOption? option = const ASWOption(),
     dynamic body,
     CancelToken? cancelToken,
   }) => _performRequest(
@@ -154,7 +154,7 @@ class ApiServiceImpl implements ApiService {
   @override
   Future<Either<DioException, Response<T>>> patchMethod<T>(
     String endpoint, {
-    ApiServiceOption? option = const ApiServiceOption(),
+    ASWOption? option = const ASWOption(),
     dynamic body,
     CancelToken? cancelToken,
   }) => _performRequest(
@@ -166,14 +166,14 @@ class ApiServiceImpl implements ApiService {
   );
 
   @override
-  Future<void> setTokens(TokenPair tokenPair) =>
+  Future<void> setTokens(ASWTokenPair tokenPair) =>
       _tokenManager.setTokenPair(tokenPair);
 
   @override
   Future<void> clearTokens() => _tokenManager.clearTokens();
 
   @override
-  Future<TokenPair?> get currentTokens => _tokenManager.tokenPair;
+  Future<ASWTokenPair?> get currentTokens => _tokenManager.tokenPair;
 
   @override
   Future<bool> get isAuthenticated => _tokenManager.isAuthenticated;

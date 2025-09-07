@@ -1,19 +1,19 @@
-import 'package:api_service/token_pair.dart';
+import 'package:api_service_wrapper/a_s_w_token_pair.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:fpdart/fpdart.dart';
 
-import 'token_manager.dart';
+import 'a_s_w_token_manager.dart';
 
-class TokenInterceptor extends Interceptor {
-  TokenInterceptor({
+class ASWTokenInterceptor extends Interceptor {
+  ASWTokenInterceptor({
     required this.tokenManager,
     this.tokenRefreshCallback,
     this.onTokenExpired,
   });
 
-  final TokenManager tokenManager;
-  final Future<Either<String, TokenPair>> Function(String refreshToken)?
+  final ASWTokenManager tokenManager;
+  final Future<Either<String, ASWTokenPair>> Function(String refreshToken)?
   tokenRefreshCallback;
   final VoidCallback? onTokenExpired;
 

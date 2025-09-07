@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'api_service_response_type.dart';
+part of 'a_s_w_response_type.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -12,7 +12,7 @@ part of 'api_service_response_type.dart';
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
-mixin _$ApiServiceResponseType {
+mixin _$ASWResponseType {
 
 
 
@@ -20,7 +20,7 @@ mixin _$ApiServiceResponseType {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ApiServiceResponseType);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ASWResponseType);
 }
 
 
@@ -29,20 +29,20 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ApiServiceResponseType()';
+  return 'ASWResponseType()';
 }
 
 
 }
 
 /// @nodoc
-class $ApiServiceResponseTypeCopyWith<$Res>  {
-$ApiServiceResponseTypeCopyWith(ApiServiceResponseType _, $Res Function(ApiServiceResponseType) __);
+class $ASWResponseTypeCopyWith<$Res>  {
+$ASWResponseTypeCopyWith(ASWResponseType _, $Res Function(ASWResponseType) __);
 }
 
 
-/// Adds pattern-matching-related methods to [ApiServiceResponseType].
-extension ApiServiceResponseTypePatterns on ApiServiceResponseType {
+/// Adds pattern-matching-related methods to [ASWResponseType].
+extension ASWResponseTypePatterns on ASWResponseType {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -186,7 +186,7 @@ return bytes();case _:
 /// @nodoc
 
 
-class _Json extends ApiServiceResponseType {
+class _Json extends ASWResponseType {
   const _Json(): super._();
   
 
@@ -206,7 +206,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ApiServiceResponseType.json()';
+  return 'ASWResponseType.json()';
 }
 
 
@@ -218,7 +218,7 @@ String toString() {
 /// @nodoc
 
 
-class _Stream extends ApiServiceResponseType {
+class _Stream extends ASWResponseType {
   const _Stream(): super._();
   
 
@@ -238,7 +238,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ApiServiceResponseType.stream()';
+  return 'ASWResponseType.stream()';
 }
 
 
@@ -250,7 +250,7 @@ String toString() {
 /// @nodoc
 
 
-class _Plain extends ApiServiceResponseType {
+class _Plain extends ASWResponseType {
   const _Plain(): super._();
   
 
@@ -270,7 +270,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ApiServiceResponseType.plain()';
+  return 'ASWResponseType.plain()';
 }
 
 
@@ -282,7 +282,7 @@ String toString() {
 /// @nodoc
 
 
-class _Bytes extends ApiServiceResponseType {
+class _Bytes extends ASWResponseType {
   const _Bytes(): super._();
   
 
@@ -302,7 +302,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ApiServiceResponseType.bytes()';
+  return 'ASWResponseType.bytes()';
 }
 
 

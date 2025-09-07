@@ -1,50 +1,50 @@
-import 'package:api_service/api_service.dart';
-import 'package:api_service/token_pair.dart';
+import 'package:api_service_wrapper/api_service_wrapper.dart';
+import 'package:api_service_wrapper/a_s_w_token_pair.dart';
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 
-abstract class ApiService {
+abstract class ASWInterface {
   Future<void> initialize();
 
   Future<Either<DioException, Response<T>>> getMethod<T>(
     String endpoint, {
-    ApiServiceOption? option,
+    ASWOption? option,
     CancelToken? cancelToken,
   });
 
   Future<Either<DioException, Response<T>>> putMethod<T>(
     String endpoint, {
-    ApiServiceOption? option,
+    ASWOption? option,
     dynamic body,
     CancelToken? cancelToken,
   });
 
   Future<Either<DioException, Response<T>>> deleteMethod<T>(
     String endpoint, {
-    ApiServiceOption? option,
+    ASWOption? option,
     dynamic body,
     CancelToken? cancelToken,
   });
 
   Future<Either<DioException, Response<T>>> postMethod<T>(
     String endpoint, {
-    ApiServiceOption? option,
+    ASWOption? option,
     dynamic body,
     CancelToken? cancelToken,
   });
 
   Future<Either<DioException, Response<T>>> patchMethod<T>(
     String endpoint, {
-    ApiServiceOption? option,
+    ASWOption? option,
     dynamic body,
     CancelToken? cancelToken,
   });
 
-  Future<void> setTokens(TokenPair tokenPair);
+  Future<void> setTokens(ASWTokenPair tokenPair);
 
   Future<void> clearTokens();
 
-  Future<TokenPair?> get currentTokens;
+  Future<ASWTokenPair?> get currentTokens;
 
   Future<bool> get isAuthenticated;
 

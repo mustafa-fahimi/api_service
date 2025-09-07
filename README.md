@@ -20,20 +20,15 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  api_service: ^2.0.0
-  database_service: ^2.0.0  # Required for secure token storage
+  api_service_wrapper: 1.0.0
 ```
-
-### Secure Token Persistence
-
-The package now uses secure storage by default for token persistence. No additional setup is required - tokens are automatically stored securely using the integrated `database_service` package with Flutter Secure Storage.
 
 ## Basic Usage
 
 ### Basic Setup
 
 ```dart
-import 'package:api_service/api_service.dart';
+import 'package:api_service_wrapper/api_service.dart';
 import 'package:dio/dio.dart';
 
 void main() async {

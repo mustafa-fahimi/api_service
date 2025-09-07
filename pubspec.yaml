@@ -1,7 +1,7 @@
-name: api_service
+name: api_service_wrapper
 description: API Service Package which is a custom wrapper over the Dio package. It provides a unified interface for making HTTP requests and managing authentication tokens.
 
-version: 2.1.0
+version: 1.0.0
 publish_to: "none"
 
 environment:

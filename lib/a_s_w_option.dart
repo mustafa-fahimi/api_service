@@ -1,25 +1,25 @@
-import 'package:api_service/api_service.dart';
+import 'package:api_service_wrapper/api_service_wrapper.dart';
 import 'package:dio/dio.dart';
 
 typedef OnPercentage = void Function(int currentBytes, int totalBytes);
 
-class ApiServiceOption {
-  const ApiServiceOption({
+class ASWOption {
+  const ASWOption({
     this.query,
     this.onReceiveProgress,
     this.onSendProgress,
-    this.header = const ApiServiceHeader.basic(),
-    this.responseType = const ApiServiceResponseType.json(),
+    this.header = const ASWHeader.basic(),
+    this.responseType = const ASWResponseType.json(),
   });
 
-  final ApiServiceHeader header;
+  final ASWHeader header;
   final Map<String, dynamic>? query;
   final OnPercentage? onReceiveProgress;
   final OnPercentage? onSendProgress;
-  final ApiServiceResponseType responseType;
+  final ASWResponseType responseType;
 }
 
-extension ApiServiceOptionEx on ApiServiceOption {
+extension ASWOptionEx on ASWOption {
   Options get requestOptions => Options(
     responseType: responseType.toDio,
     headers: header.toMap,

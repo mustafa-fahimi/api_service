@@ -1,13 +1,13 @@
-import 'package:api_service/token_pair.dart';
+import 'package:api_service_wrapper/a_s_w_token_pair.dart';
 import 'package:database_service/database_service.dart';
 import 'package:database_service/nosql/secure_storage/secure_storage_service_impl.dart';
 
-class TokenManager {
-  TokenManager._();
+class ASWTokenManager {
+  ASWTokenManager._();
 
-  static TokenManager? _instance;
-  static TokenManager get instance {
-    _instance ??= TokenManager._();
+  static ASWTokenManager? _instance;
+  static ASWTokenManager get instance {
+    _instance ??= ASWTokenManager._();
     return _instance!;
   }
 
@@ -22,7 +22,7 @@ class TokenManager {
   static const String _refreshTokenKey = 'refresh_token';
   static const String _expiresAtKey = 'token_expires_at';
 
-  Future<TokenPair?> get tokenPair async {
+  Future<ASWTokenPair?> get tokenPair async {
     final accessToken = await _storage.read(_accessTokenKey);
     if (accessToken == null) return null;
 
@@ -32,14 +32,14 @@ class TokenManager {
         ? DateTime.fromMillisecondsSinceEpoch(int.parse(expiresAtStr))
         : null;
 
-    return TokenPair(
+    return ASWTokenPair(
       accessToken: accessToken,
       refreshToken: refreshToken,
       expiresAt: expiresAt,
     );
   }
 
-  Future<void> setTokenPair(TokenPair tokenPair) async {
+  Future<void> setTokenPair(ASWTokenPair tokenPair) async {
     final batch = <String, String>{_accessTokenKey: tokenPair.accessToken};
 
     if (tokenPair.refreshToken != null) {
