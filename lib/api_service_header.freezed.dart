@@ -86,11 +86,11 @@ extension ApiServiceHeaderPatterns on ApiServiceHeader {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _FormData value)?  formData,TResult Function( Basic value)?  basic,TResult Function( _Data value)?  data,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _FormData value)?  formData,TResult Function( _Basic value)?  basic,TResult Function( _Data value)?  data,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _FormData() when formData != null:
-return formData(_that);case Basic() when basic != null:
+return formData(_that);case _Basic() when basic != null:
 return basic(_that);case _Data() when data != null:
 return data(_that);case _:
   return orElse();
@@ -110,11 +110,11 @@ return data(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _FormData value)  formData,required TResult Function( Basic value)  basic,required TResult Function( _Data value)  data,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _FormData value)  formData,required TResult Function( _Basic value)  basic,required TResult Function( _Data value)  data,}){
 final _that = this;
 switch (_that) {
 case _FormData():
-return formData(_that);case Basic():
+return formData(_that);case _Basic():
 return basic(_that);case _Data():
 return data(_that);}
 }
@@ -130,11 +130,11 @@ return data(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _FormData value)?  formData,TResult? Function( Basic value)?  basic,TResult? Function( _Data value)?  data,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _FormData value)?  formData,TResult? Function( _Basic value)?  basic,TResult? Function( _Data value)?  data,}){
 final _that = this;
 switch (_that) {
 case _FormData() when formData != null:
-return formData(_that);case Basic() when basic != null:
+return formData(_that);case _Basic() when basic != null:
 return basic(_that);case _Data() when data != null:
 return data(_that);case _:
   return null;
@@ -156,7 +156,7 @@ return data(_that);case _:
 @optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( Map<String, String>? headers)?  formData,TResult Function( Map<String, String>? headers)?  basic,TResult Function( Map<String, String>? headers)?  data,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _FormData() when formData != null:
-return formData(_that.headers);case Basic() when basic != null:
+return formData(_that.headers);case _Basic() when basic != null:
 return basic(_that.headers);case _Data() when data != null:
 return data(_that.headers);case _:
   return orElse();
@@ -179,7 +179,7 @@ return data(_that.headers);case _:
 @optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( Map<String, String>? headers)  formData,required TResult Function( Map<String, String>? headers)  basic,required TResult Function( Map<String, String>? headers)  data,}) {final _that = this;
 switch (_that) {
 case _FormData():
-return formData(_that.headers);case Basic():
+return formData(_that.headers);case _Basic():
 return basic(_that.headers);case _Data():
 return data(_that.headers);}
 }
@@ -198,7 +198,7 @@ return data(_that.headers);}
 @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( Map<String, String>? headers)?  formData,TResult? Function( Map<String, String>? headers)?  basic,TResult? Function( Map<String, String>? headers)?  data,}) {final _that = this;
 switch (_that) {
 case _FormData() when formData != null:
-return formData(_that.headers);case Basic() when basic != null:
+return formData(_that.headers);case _Basic() when basic != null:
 return basic(_that.headers);case _Data() when data != null:
 return data(_that.headers);case _:
   return null;
@@ -285,8 +285,8 @@ as Map<String, String>?,
 /// @nodoc
 
 
-class Basic extends ApiServiceHeader {
-  const Basic({final  Map<String, String>? headers}): _headers = headers,super._();
+class _Basic extends ApiServiceHeader {
+  const _Basic({final  Map<String, String>? headers}): _headers = headers,super._();
   
 
  final  Map<String, String>? _headers;
@@ -303,13 +303,13 @@ class Basic extends ApiServiceHeader {
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$BasicCopyWith<Basic> get copyWith => _$BasicCopyWithImpl<Basic>(this, _$identity);
+_$BasicCopyWith<_Basic> get copyWith => __$BasicCopyWithImpl<_Basic>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Basic&&const DeepCollectionEquality().equals(other._headers, _headers));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Basic&&const DeepCollectionEquality().equals(other._headers, _headers));
 }
 
 
@@ -325,8 +325,8 @@ String toString() {
 }
 
 /// @nodoc
-abstract mixin class $BasicCopyWith<$Res> implements $ApiServiceHeaderCopyWith<$Res> {
-  factory $BasicCopyWith(Basic value, $Res Function(Basic) _then) = _$BasicCopyWithImpl;
+abstract mixin class _$BasicCopyWith<$Res> implements $ApiServiceHeaderCopyWith<$Res> {
+  factory _$BasicCopyWith(_Basic value, $Res Function(_Basic) _then) = __$BasicCopyWithImpl;
 @override @useResult
 $Res call({
  Map<String, String>? headers
@@ -337,17 +337,17 @@ $Res call({
 
 }
 /// @nodoc
-class _$BasicCopyWithImpl<$Res>
-    implements $BasicCopyWith<$Res> {
-  _$BasicCopyWithImpl(this._self, this._then);
+class __$BasicCopyWithImpl<$Res>
+    implements _$BasicCopyWith<$Res> {
+  __$BasicCopyWithImpl(this._self, this._then);
 
-  final Basic _self;
-  final $Res Function(Basic) _then;
+  final _Basic _self;
+  final $Res Function(_Basic) _then;
 
 /// Create a copy of ApiServiceHeader
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? headers = freezed,}) {
-  return _then(Basic(
+  return _then(_Basic(
 headers: freezed == headers ? _self._headers : headers // ignore: cast_nullable_to_non_nullable
 as Map<String, String>?,
   ));

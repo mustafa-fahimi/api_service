@@ -21,6 +21,7 @@
 - Enhanced token expiration checks with secure storage
 
 ### 🔧 Technical Improvements
+- **Enhanced ApiServiceHeader**: Fixed hardcoded boundary in form-data content-type with dynamic generation, standardized factory naming conventions, and added comprehensive documentation
 - Replaced in-memory storage with encrypted persistent storage
 - Improved token refresh flow with secure storage integration
 - Added proper initialization guards to prevent uninitialized access
