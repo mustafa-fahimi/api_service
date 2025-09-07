@@ -1,3 +1,4 @@
+import 'package:api_service/token_pair.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:fpdart/fpdart.dart';

@@ -1,35 +1,6 @@
+import 'package:api_service/token_pair.dart';
 import 'package:database_service/database_service.dart';
 import 'package:database_service/nosql/secure_storage/secure_storage_service_impl.dart';
-
-class TokenPair {
-  const TokenPair({
-    required this.accessToken,
-    this.refreshToken,
-    this.expiresAt,
-  });
-
-  final String accessToken;
-  final String? refreshToken;
-  final DateTime? expiresAt;
-
-  bool get isExpired {
-    if (expiresAt == null) return false;
-    return DateTime.now().isAfter(expiresAt!);
-  }
-
-  TokenPair copyWith({
-    String? accessToken,
-    String? refreshToken,
-    DateTime? expiresAt,
-  }) {
-    return TokenPair(
-      accessToken: accessToken ?? this.accessToken,
-      refreshToken: refreshToken ?? this.refreshToken,
-      expiresAt: expiresAt ?? this.expiresAt,
-    );
-  }
-}
-
 
 class TokenManager {
   TokenManager._();
@@ -69,16 +40,15 @@ class TokenManager {
   }
 
   Future<void> setTokenPair(TokenPair tokenPair) async {
-    final batch = <String, String>{
-      _accessTokenKey: tokenPair.accessToken,
-    };
+    final batch = <String, String>{_accessTokenKey: tokenPair.accessToken};
 
     if (tokenPair.refreshToken != null) {
       batch[_refreshTokenKey] = tokenPair.refreshToken!;
     }
 
     if (tokenPair.expiresAt != null) {
-      batch[_expiresAtKey] = tokenPair.expiresAt!.millisecondsSinceEpoch.toString();
+      batch[_expiresAtKey] = tokenPair.expiresAt!.millisecondsSinceEpoch
+          .toString();
     }
 
     await _storage.writeBatch(batch);
