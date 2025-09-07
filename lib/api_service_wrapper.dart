@@ -1,3 +1,4 @@
+/// @author Mostafa Fahimi
 library;
 
 export 'a_s_w_header.dart';

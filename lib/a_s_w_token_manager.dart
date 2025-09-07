@@ -1,6 +1,5 @@
 import 'package:api_service_wrapper/a_s_w_token_pair.dart';
-import 'package:database_service/database_service.dart';
-import 'package:database_service/nosql/secure_storage/secure_storage_service_impl.dart';
+import 'package:database_service_wrapper/database_service_wrapper.dart';
 
 class ASWTokenManager {
   ASWTokenManager._();
@@ -11,11 +10,10 @@ class ASWTokenManager {
     return _instance!;
   }
 
-  late final SecureStorageService _storage;
+  late final DBSWSecureStorageServiceImplementation _storage;
 
   Future<void> initialize() async {
-    _storage = SecureStorageServiceImpl();
-    await _storage.initialize();
+    _storage = DBSWSecureStorageServiceImplementation();
   }
 
   static const String _accessTokenKey = 'access_token';
@@ -40,18 +38,16 @@ class ASWTokenManager {
   }
 
   Future<void> setTokenPair(ASWTokenPair tokenPair) async {
-    final batch = <String, String>{_accessTokenKey: tokenPair.accessToken};
+    await _storage.write(_accessTokenKey, tokenPair.accessToken);
 
     if (tokenPair.refreshToken != null) {
-      batch[_refreshTokenKey] = tokenPair.refreshToken!;
+      await _storage.write(_refreshTokenKey, tokenPair.refreshToken!);
     }
 
     if (tokenPair.expiresAt != null) {
-      batch[_expiresAtKey] = tokenPair.expiresAt!.millisecondsSinceEpoch
-          .toString();
+      await _storage.write(_expiresAtKey, tokenPair.expiresAt!.millisecondsSinceEpoch
+          .toString());
     }
-
-    await _storage.writeBatch(batch);
   }
 
   Future<void> clearTokens() async {
@@ -77,9 +73,5 @@ class ASWTokenManager {
 
   Future<String?> get refreshToken async {
     return (await tokenPair)?.refreshToken;
-  }
-
-  Future<void> clearAllSecureData() async {
-    await _storage.deleteAll();
   }
 }

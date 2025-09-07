@@ -8,10 +8,7 @@ environment:
   sdk: '>=3.9.0 <4.0.0'
 
 dependencies:
-  database_service:
-    git:
-      url: https://github.com/mustafa-fahimi/database_service.git
-      ref: master
+  database_service_wrapper: 1.0.2
   dio: 5.9.0
   flutter:
     sdk: flutter

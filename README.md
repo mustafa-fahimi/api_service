@@ -99,5 +99,5 @@ final result = await apiService.getMethod(
 
 - `dio`: HTTP client
 - `fpdart`: Functional programming utilities
-- `database_service`: Secure storage wrapper
+- `database_service_wrapper`: Secure storage wrapper
 - `flutter_secure_storage`: Platform-specific secure storage
