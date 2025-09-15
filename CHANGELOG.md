@@ -1,3 +1,11 @@
+## 1.0.1
+
+### 🔧 Improvements & Minor Fixes
+
+- **Performance Improvements**: Optimized internal implementations for better performance
+- **Bug Fixes**: Resolved various minor issues and edge cases
+- **Code Quality**: Enhanced code structure and maintainability
+
 ## 1.0.0
 
 ### ✨ Initial Release
