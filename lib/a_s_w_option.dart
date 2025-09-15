@@ -20,8 +20,6 @@ class ASWOption {
 }
 
 extension ASWOptionEx on ASWOption {
-  Options get requestOptions => Options(
-    responseType: responseType.toDio,
-    headers: header.toMap,
-  );
+  Options get requestOptions =>
+      Options(responseType: responseType.toDio, headers: header.toMap);
 }

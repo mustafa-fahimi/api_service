@@ -14,6 +14,7 @@ class ASWTokenManager {
 
   Future<void> initialize() async {
     _storage = DBSWSecureStorageServiceImplementation();
+    await _storage.initialize();
   }
 
   static const String _accessTokenKey = 'access_token';

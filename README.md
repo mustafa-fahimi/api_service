@@ -37,11 +37,13 @@ void main() async {
     receiveTimeout: const Duration(seconds: 30),
   ));
 
-  // Initialize API Service Wrapper
+  // Initialize API Service Wrapper (REQUIRED)
   final apiService = ASWImplementation(dio: dio);
   await apiService.initialize();
 }
 ```
+
+> **Important**: Always call `await apiService.initialize()` after creating the ASWImplementation instance to properly set up token management.
 
 ### Making Requests
 
@@ -63,7 +65,7 @@ final postResult = await apiService.postMethod<Map<String, dynamic>>(
 final customResult = await apiService.getMethod<String>(
   '/protected-endpoint',
   option: ASWOption(
-    header: ASWHeader.bearer(token: 'custom-token'),
+    header: ASWHeader.basic(),
     query: {'page': '1', 'limit': '10'},
   ),
 );
@@ -85,6 +87,17 @@ final isAuthenticated = await apiService.isAuthenticated;
 await apiService.clearTokens();
 ```
 
+### Authentication Headers
+
+When you set tokens using `setTokens()`, the `ASWTokenInterceptor` automatically adds the `Authorization: Bearer <access_token>` header to all requests. You don't need to manually add bearer headers - just set your tokens and the interceptor handles the rest.
+
+For protected endpoints, simply make requests normally:
+
+```dart
+// This request will automatically include the Bearer token header
+final result = await apiService.getMethod<String>('/protected-endpoint');
+```
+
 ### Advanced Configuration
 
 ```dart
@@ -93,7 +106,11 @@ final apiService = ASWImplementation(
   tokenRefreshCallback: (refreshToken) async {
     // Implement your token refresh logic
     final response = await dio.post('/refresh', data: {'refreshToken': refreshToken});
-    return right(ASWTokenPair.fromJson(response.data));
+    final data = response.data as Map<String, dynamic>;
+    return right(ASWTokenPair(
+      accessToken: data['accessToken'] as String,
+      refreshToken: data['refreshToken'] as String?,
+    ));
   },
   onTokenExpired: () {
     // Handle token expiration (e.g., navigate to login)
@@ -124,7 +141,7 @@ Configuration class for request options:
 
 ```dart
 ASWOption(
-  header: ASWHeader.basic(), // or ASWHeader.bearer(token: 'token')
+  header: ASWHeader.basic(),
   query: {'key': 'value'},
   onReceiveProgress: (current, total) => print('Progress: $current/$total'),
   responseType: ASWResponseType.json(),

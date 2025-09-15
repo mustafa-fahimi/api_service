@@ -1,5 +1,4 @@
 import 'package:api_service_wrapper/api_service_wrapper.dart';
-import 'package:api_service_wrapper/a_s_w_token_pair.dart';
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 

@@ -8,8 +8,7 @@ part 'a_s_w_header.freezed.dart';
 sealed class ASWHeader with _$ASWHeader {
   const ASWHeader._();
 
-  const factory ASWHeader.formData({Map<String, String>? headers}) =
-      _FormData;
+  const factory ASWHeader.formData({Map<String, String>? headers}) = _FormData;
   const factory ASWHeader.basic({Map<String, String>? headers}) = _Basic;
   const factory ASWHeader.data({Map<String, String>? headers}) = _Data;
 }
